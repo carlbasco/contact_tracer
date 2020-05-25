@@ -55,8 +55,8 @@
                                 <input class="form-control" value="{{data.province}}" readonly>
                             </div>
                             <div class="form-group col-md-12 mt-3">
-                                <a class="btn btn-danger float-right" href="{% url 'place_delete' data.id %}" role="button">Delete</a>
-                                <a class="btn btn-primary float-right mr-3" href="{% url 'place_update' data.id %}" role="button">Edit</a>
+                                <a class="btn btn-outline-danger float-right" href="{% url 'place_delete' data.id %}" role="button">Delete</a>
+                                <a class="btn btn-outline-primary float-right mr-3" href="{% url 'place_update' data.id %}" role="button">Edit</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             <td class="text-center">{{i.user.address}}</td>
                             {% endif %}
                             <td class="text-center">
-                                <a class="btn btn-primary" href="{% url 'checkin_delete' i.id %}" role="button">Delete</a>
+                                <a class="btn btn-outline-danger" href="{% url 'checkin_delete' i.id %}" role="button">Delete</a>
                             </td>
                         </tr>
                         {% endfor %}
