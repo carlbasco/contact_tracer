@@ -23,10 +23,10 @@
                         <a class="nav-link" href="{% url 'user_list'%}">User List<span class="sr-only">(current)</span></a>
                     </li>
                 {% endif %}
-                <img class="rounded-circle" src="{{request.user.image.url}}" alt="User Avatar" id="nav_profile" width="50px">
+                <img class="rounded-circle mx-auto" src="{{request.user.image.url}}" alt="User Avatar" id="nav_profile" width="50px">
                 <li class="nav-item dropdown" id="profile_link">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                         <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
                         <div class="dropdown-divider"></div>

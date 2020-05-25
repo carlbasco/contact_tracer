@@ -47,11 +47,11 @@ def SignOutView(request):
     logout(request)
     return redirect('login')
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 def ProfileView(request):
     return render(request, 'account/profile.html')
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 def ProfileUpdateView(request):
     user = request.user
     if request.method == 'POST':
@@ -65,7 +65,7 @@ def ProfileUpdateView(request):
     context = {'form':form}
     return render(request, 'account/profile_update.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 def ChangePasswordView(request):
     form = PasswordChangeForm(user=request.user, data=request.POST or None)
     if form.is_valid():
@@ -76,7 +76,7 @@ def ChangePasswordView(request):
     context={'form':form,}
     return render(request, 'account/change_password.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def PlaceCreateView(request):
     data = Place.objects.all()
@@ -96,7 +96,7 @@ def PlaceCreateView(request):
     context={'form':form, 'data':data}
     return render(request, 'place/placeform.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def PlaceDetailView(request,pk):
     data = Place.objects.get(id=pk)
@@ -104,7 +104,7 @@ def PlaceDetailView(request,pk):
     context = {'data':data , 'data2':data2}
     return render(request, 'place/place_detail.html', context)
     
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def PlaceUpdateView(request,pk):
     place = Place.objects.get(id=pk)
@@ -123,7 +123,7 @@ def PlaceUpdateView(request,pk):
     context={'form':form}
     return render(request, 'place/place_update.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def PlaceDeleteView(request,pk):
     data = Place.objects.get(id=pk)
@@ -135,14 +135,14 @@ def PlaceDeleteView(request,pk):
     context={'data':data, 'data2':data2}
     return render(request, 'place/place_delete.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def UserListView(request):
     data = User.objects.all()
     context={'data':data}
     return render(request, 'account/user_list.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def UserDetailView(request,pk):
     data = User.objects.get(id=pk)
@@ -150,7 +150,7 @@ def UserDetailView(request,pk):
     context = {'data':data, 'data2':data2}
     return render(request, 'account/user_detail.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def UserCheckInDeleteView(request,pk):
     data3 = CheckIn.objects.get(id=pk)
@@ -163,7 +163,7 @@ def UserCheckInDeleteView(request,pk):
     context={'data':data, 'data2':data2, 'data3':data3 }
     return render(request, 'account/user_checkin_delete.html', context)
 
-@login_required(login_url='signin')
+@login_required(login_url='login')
 def CheckInCreateView(request):
     data = request.user
     data2 = CheckIn.objects.filter(user=data.id)
@@ -175,7 +175,7 @@ def CheckInCreateView(request):
     context = {'form':form, 'data2':data2}
     return render(request, 'checkin/checkin_form.html', context)
     
-@login_required(login_url='signin')
+@login_required(login_url='login')
 @restricted_user
 def CheckInDeleteView(request,pk):
     data = CheckIn.objects.get(id=pk)
