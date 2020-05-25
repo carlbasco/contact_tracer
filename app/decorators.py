@@ -14,6 +14,6 @@ def restricted_user(view_func):
         group = None
         if group =='User':
             return redirect('place_create')
-        elif group =='Admin':
-           return view_func(request, *args, **kwargs)
+        else:
+            return view_func(request, *args, **kwargs)
     return wrapper_function
