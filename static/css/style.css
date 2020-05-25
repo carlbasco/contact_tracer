@@ -1,0 +1,49 @@
+a, p, h1, h2, h3 , h4 ,h5, h6{
+    font-family: "Open Sans", sans-serif;
+}
+a.nav-link{
+    font-size: 1.1rem;
+    color: black;
+    text-align: center;
+}
+nav#navbar {
+    box-shadow: 0px -10px 33px 10px rgba(0,0,0,0.75);
+    margin-bottom: 50px;
+}
+dropdown-item:focus, .dropdown-item:hover {
+    background-color: #3980c6;
+    color:white
+}
+#btn-signout:hover{
+    background-color: #c63939;
+    color:white
+}
+.container-fluid {
+    height: 600px;
+}
+.form-group {
+    margin-bottom: .1rem!important;
+}
+#fd{
+    height: 700px;
+}
+.btn-loginregister{
+    margin-top: 15px;
+}
+#card_register{
+    margin-bottom: 60px;
+}
+.card-header {
+    color: white;
+    background: #4671c6;
+}
+img.rounded-circle {
+    border: 5px solid #cfd8dc;
+}
+button#addplace:hover {
+    background-color: lightgray;
+    color:black;
+}
+button#addplace {
+    background-color: white;
+}

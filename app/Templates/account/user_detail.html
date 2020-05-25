@@ -1,0 +1,133 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block title%}
+<title>User</title>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6 mx-auto">
+    {% for message in messages %}
+        <div class="alert alert-{{message.extra_tags}} alert-dismissible fade show" role="alert">
+            {% if message.extra_tags == "success" %}
+                <strong>Success! </strong>
+            {% else %}
+                <strong>Error! </strong>
+            {% endif %}
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="col-md-6 mx-auto">
+    <div class="card" id="profile">
+        <div class="card-header">
+            <h3 class="text-center">Account Details</h3>
+        </div>
+        <div class="card-body">
+            <div class=row>
+                <div class="mx-auto my-auto mb-5 text-center">
+                    <img class="rounded-circle" src="{{data.image.url}}" alt="User Avatar" width="110">
+                    <br><br>
+                </div>
+                <div class="col-lg-9">
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="feFirstName">Full Name</label>
+                                <input type="text" class="form-control" value="{{data.full_name}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Birthdate</label>
+                                <input class="form-control" value="{{data.birthdate}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sex</label>
+                                <input class="form-control" value="{{data.sex}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Contact Number</label>
+                                <input class="form-control" value="{{data.contact_number}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <input class="form-control" value="{{data.email}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input class="form-control" value="{{data.address}}" readonly>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="feInputCity">City/Municipality</label>
+                                <input type="text" class="form-control" value="{{data.city}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="feInputState">Province</label>
+                                <input type="text" class="form-control" value="{{data.province}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel">Travel History</label>
+                            <textarea class="form-control" id="travel" rows="5" readonly>{{data.travel_history}}</textarea>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 mx-auto mt-5">
+    <div class="card" id="">
+        <div class="card-header text-center">
+            <h4 class="my-auto">Check In History</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-md" id="checkinlist">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Place</th>
+                        <th scope="col" class="text-center">Date</th>
+                        <th scope="col" class="text-center">Time</th>
+                        <th scope="col" class="text-center">Recent Place</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data2 %}
+                    <tr>
+                        <td class="text-center">{{i.checkin_place}}</td>
+                        <td class="text-center">{{i.date}}</td>
+                        <td class="text-center">{{i.time}}</td>
+                        {% if i.recent_place == 'Others'%}
+                        <td class="text-center">{{i.recent_location}}</td>
+                        {% else %}
+                        <td class="text-center">{{i.recent_place}}</td>
+                        {% endif %}
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="{% url 'usercheckin_delete' i.id %}" role="button">delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block js%}
+{% endblock %}

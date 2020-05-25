@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block title%}
+<title>Users</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row" id="fd">
+        <div class="col-md-8 mx-auto ">
+            <div class="card" id="">
+                <div class="card-header text-center">
+                    <h4 class="my-auto">User List</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive-md" id="userlist">
+                        <thead>
+                            <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Middle Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Suffix</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">City/ Municipality</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                                <th scope="row" class="text-center">{{i.first_name}}</th>
+                                <td class="text-center">{{i.middle_name}}</td>
+                                <td class="text-center">{{i.last_name}}</td>
+                                <td class="text-center">{{i.suffix}}</td>
+                                <td class="text-center">{{i.address}}</td>
+                                <td class="text-center">{{i.city}}</td>
+                                <td class="text-center">{{i.contact_number}}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{% url 'user_detail' i.id%}" role="button">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#userlist').DataTable();
+} );
+</script>
+{% endblock%}

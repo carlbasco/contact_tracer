@@ -1,0 +1,107 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block title%}
+<title>Register</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row" id="fd">
+        <div class="col-md-6 mx-auto ">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="card" id="card_register">
+                    <div class="card-header text-center">
+                        <h4 class="my-auto">Register</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 mb-3">
+                                    <h2>Tell us about yourself</h2>
+                                    <h6>This info helps the contact tracer to identify the right person faster when needed to</h6>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.first_name|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.middle_name|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.last_name|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.suffix|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.sex|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.birthdate|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.address|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.province|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.city|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.contact_number|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.travel_history|as_crispy_field}}
+                                    <small id="hint_id_travel_history" class="form-text text-muted">Please indicate hear your recent travel history. If you dont have any, just leave it blank</small>
+                                </div>
+                                <div class="col-md-10 mt-4">
+                                    <h5 class="card-title">User Account Information:</h5>
+                                </div>
+
+                                <div class="form-group col-md-8">
+                                    {{form.email|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.password|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {{form.cpassword|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <button type="submit" class="btn btn-primary float-right btn-loginregister">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>
+{% endblock %}
+
+
+{% block js %}
+<script>
+    $('#id_city').prop('readonly', true);
+</script>
+<script src="{% static 'js/province-city.js'%}"></script>
+<script>
+    $('#id_birthdate').datepicker({
+        uiLibrary: 'bootstrap4',
+        format: 'yyyy-mm-dd'
+    });
+</script>
+
+<style>
+    span.select2-selection.select2-selection--single {height: 35px;}
+</style>
+{% endblock %}

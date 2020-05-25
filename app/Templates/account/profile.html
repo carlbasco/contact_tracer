@@ -1,0 +1,99 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% block title%}
+<title>Profile</title>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6 mx-auto">
+    {% for message in messages %}
+        <div class="alert alert-{{message.extra_tags}} alert-dismissible fade show" role="alert">
+            {% if message.extra_tags == "success" %}
+                <strong>Success! </strong>
+            {% else %}
+                <strong>Error! </strong>
+            {% endif %}
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="col-md-6 mx-auto pd-100">
+    <div class="card" id="profile">
+        <div class="card-header">
+            <h3>Account Details</h3>
+        </div>
+        <div class="card-body">
+            <div class=row>
+            
+                <div class="mx-auto my-auto mb-5 text-center">
+                    <img class="rounded-circle" src="{{request.user.image.url}}" alt="User Avatar" width="110">
+                    <br><br>
+                    <form action="">
+                        <button type="submit" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" formaction="{% url 'profile_update'%}" >Edit Profile</button>
+                    </form>
+                </div>
+                <div class="col-lg-9">
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="feFirstName">Full Name</label>
+                                <input type="text" class="form-control" value="{{request.user.full_name}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Birthdate</label>
+                                <input class="form-control" value="{{request.user.birthdate}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sex</label>
+                                <input class="form-control" value="{{request.user.sex}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Contact Number</label>
+                                <input class="form-control" value="{{request.user.contact_number}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <input class="form-control" value="{{request.user.email}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input class="form-control" value="{{request.user.address}}" readonly>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="feInputCity">City/Municipality</label>
+                                <input type="text" class="form-control" value="{{request.user.city}}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="feInputState">Province</label>
+                                <input type="text" class="form-control" value="{{request.user.province}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel">Travel History</label>
+                            <textarea class="form-control" id="travel" rows="5" readonly>{{request.user.travel_history}}</textarea>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block js%}
+
+{% endblock %}
