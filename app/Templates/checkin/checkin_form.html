@@ -72,14 +72,11 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block js %}
 <script>
     $('#div_id_user').hide();
-
     $('#div_id_recent_location').hide();
     $('#id_recent_location').select2();
     $('#id_recent_place').change(function(){
@@ -93,7 +90,5 @@
         }
     });
 </script>
-<style>
-    span.select2-selection.select2-selection--single {height: 35px;}
-</style>
+<style>span.select2-selection.select2-selection--single {height: 35px;}</style>
 {% endblock%}

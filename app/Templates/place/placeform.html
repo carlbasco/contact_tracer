@@ -78,10 +78,7 @@
 
 {% block js%}
 <script src="{% static 'js/province-city.js'%}"></script>
-
-<style>
-    span.select2-selection.select2-selection--single {height: 35px;}
-</style>
+<style>span.select2-selection.select2-selection--single {height: 35px;}</style>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.js"></script>
@@ -90,5 +87,4 @@
         $('#placelist').DataTable();
     });
 </script>
-
 {% endblock%}

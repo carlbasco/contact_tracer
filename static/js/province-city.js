@@ -1,7 +1,5 @@
 $('#id_province').select2();
 
-
-
 $('#id_city').prop('readonly', true);
 
 $('#id_province').change(function(){
@@ -22,8 +20,6 @@ var province = $(this).val()
                         console.log(data[j].name + "--" + data[j].id);
                         $("#id_city").append("<option value='" +data[j].id+ "'>" +data[j].name+ "     </option>");
                 }
-                
-                
             }  
         })
     }

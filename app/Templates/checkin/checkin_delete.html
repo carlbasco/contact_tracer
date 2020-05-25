@@ -3,7 +3,7 @@
 {% load crispy_forms_tags%}
 
 {% block title%}
-<title>Delete</title>
+<title>Check-In</title>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,6 @@
         </div>
     {% endfor %}
 </div>
-
 <div class="container-fluid">
     <div class="col-md-8 mx-auto" id="">
         <div class="card" id="">
@@ -131,10 +130,8 @@
 {% block js%}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/datatables.min.js"></script>
-<script>
-    $('#checkinlist').DataTable();
-</script>
 <script type="text/javascript">
+    $('#checkinlist').DataTable();
     $('#myModal').modal('show')
 </script>
 {% endblock%}

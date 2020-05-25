@@ -82,17 +82,9 @@
         </div>
     </div>
 </div>
-
-<script>
-    
-</script>
 {% endblock %}
 
-
 {% block js %}
-<script>
-    $('#id_city').prop('readonly', true);
-</script>
 <script src="{% static 'js/province-city.js'%}"></script>
 <script>
     $('#id_birthdate').datepicker({
@@ -100,8 +92,5 @@
         format: 'yyyy-mm-dd'
     });
 </script>
-
-<style>
-    span.select2-selection.select2-selection--single {height: 35px;}
-</style>
+<style>span.select2-selection.select2-selection--single {height: 35px;}</style>
 {% endblock %}
