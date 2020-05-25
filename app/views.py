@@ -29,7 +29,7 @@ def SignUpView(request):
             messages.success(request, "User has been created", extra_tags="success")
             return redirect('login')
         else:
-            messages.warning(request, "Failed to create user", extra_tags="warning")
+            messages.warning(request, "Failed to create user. Please check your fields", extra_tags="warning")
             return redirect('register')
     else:
         form = SignUpForm()

@@ -61,7 +61,6 @@
                                 <div class="col-md-10 mt-4">
                                     <h5 class="card-title">User Account Information:</h5>
                                 </div>
-
                                 <div class="form-group col-md-8">
                                     {{form.email|as_crispy_field}}
                                 </div>
@@ -86,6 +85,7 @@
 
 {% block js %}
 <script src="{% static 'js/province-city.js'%}"></script>
+<script src="{% static 'js/validation-city.js'%}"></script>
 <script>
     $('#id_birthdate').datepicker({
         uiLibrary: 'bootstrap4',

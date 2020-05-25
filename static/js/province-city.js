@@ -20,6 +20,7 @@ var province = $(this).val()
                         console.log(data[j].name + "--" + data[j].id);
                         $("#id_city").append("<option value='" +data[j].id+ "'>" +data[j].name+ "     </option>");
                 }
+                $('#id_city').select2();
             }  
         })
     }
