@@ -38,7 +38,7 @@ class UserAdminChangeForm(forms.ModelForm):
 class SignUpForm(forms.ModelForm):
     travel_history = forms.CharField(widget=forms.Textarea(attrs={"rows":5}), required=False)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    cpassword = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    cpassword = forms.CharField(label='Password Confirmation', widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['email','first_name','middle_name','last_name','suffix','sex','birthdate','address','province','city','contact_number','travel_history']
@@ -54,7 +54,7 @@ class SignUpForm(forms.ModelForm):
         password = self.cleaned_data.get("password")
         cpassword = self.cleaned_data.get("cpassword")
         if password != cpassword:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("Password and Password Confirmation does not match")
         return cpassword
 
     def save(self, commit=True):

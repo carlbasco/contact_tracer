@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row" id="fd">
         <div class="col-md-6 mx-auto ">
-            <form action="" method="post">
+            <form action="" method="post" id="SignUpForm">
                 {% csrf_token %}
                 <div class="card" id="card_register">
                     <div class="card-header text-center">
@@ -85,7 +85,6 @@
 
 {% block js %}
 <script src="{% static 'js/province-city.js'%}"></script>
-<script src="{% static 'js/validation-city.js'%}"></script>
 <script>
     $('#id_birthdate').datepicker({
         uiLibrary: 'bootstrap4',

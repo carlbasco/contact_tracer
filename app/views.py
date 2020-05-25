@@ -22,18 +22,12 @@ from .models import *
 
 @unauthenticated_user
 def SignUpView(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "User has been created", extra_tags="success")
-            return redirect('login')
-        else:
-            messages.warning(request, "Failed to create user. Please check your fields", extra_tags="warning")
-            return redirect('register')
-    else:
-        form = SignUpForm()
-    context={'form':form}
+    form = SignUpForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "User has been created", extra_tags="success")
+        return redirect('login')
+    context ={'form':form}
     return render(request, 'register.html', context)
     
 @unauthenticated_user
@@ -61,13 +55,11 @@ def ProfileView(request):
 def ProfileUpdateView(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=user)
+        form = ProfileForm(request.POST or None, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your profile has been updated", extra_tags="success")
+            messages.success(request, "Your profile has been updated",extra_tags="success")
             return redirect('profile')
-        else:
-            messages.warning(request, "Failed to update your profile", extra_tags="warning")
     else:
         form = ProfileForm(instance=user)
     context = {'form':form}
@@ -117,7 +109,7 @@ def PlaceDetailView(request,pk):
 def PlaceUpdateView(request,pk):
     place = Place.objects.get(id=pk)
     if request.method=='POST':
-        form = PlaceForm(request.POST, request.FILES, instance=place )
+        form = PlaceForm(request.POST, request.FILES, instance=place)
         if form.is_valid():
             form.save()
             messages.success(request, "Place has been updated", extra_tags="success")
@@ -175,14 +167,11 @@ def UserCheckInDeleteView(request,pk):
 def CheckInCreateView(request):
     data = request.user
     data2 = CheckIn.objects.filter(user=data.id)
-    if request.method == 'POST':
-        form = CheckInForm(request.POST,initial={'user':request.user})
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Check-In has been made", extra_tags="success")
-            return redirect('checkin')
-    else:
-        form = CheckInForm(initial={'user':request.user})
+    form = CheckInForm(request.POST or None, initial={'user':request.user})
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Check-In has been made", extra_tags="success")
+        return redirect('checkin')
     context = {'form':form, 'data2':data2}
     return render(request, 'checkin/checkin_form.html', context)
     
