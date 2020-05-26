@@ -112,7 +112,7 @@ class CheckIn(models.Model):
     checkin_place = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True, blank=True, related_name="now", )
     x = [('Home','Home'), ('Others','Others')]
     recent_place = models.CharField(("Recent place that have you been"),max_length=255, choices=x)
-    recent_location = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True, blank=True, related_name="recent" )
+    recent_location = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True, blank=True, related_name="recent", verbose_name="Please Select Place")
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)
 
